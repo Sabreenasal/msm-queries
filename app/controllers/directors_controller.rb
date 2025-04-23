@@ -7,6 +7,14 @@ class DirectorsController < ApplicationController
     render({ :template => "directors/index" })
   end
 
+  def youngest
+    render({ :template => "directors/youngest"})
+  end
+
+  def eldest
+    render({ :template => "directors/eldest"})
+  end
+
   def show
     the_id = params.fetch("path_id")
 

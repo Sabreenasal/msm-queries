@@ -1,0 +1,5 @@
+<h1>Eldest director</h1>
+
+<% director = Director.where.not({ :dob => nil }).order({ :dob => :asc }).at(0) %>
+
+<p>The eldest director in our dataset right now is <%= director.name %>, born on September 19, 1988.</p>
