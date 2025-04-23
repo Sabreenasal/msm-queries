@@ -17,7 +17,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_23_021921) do
   create_table "actors", force: :cascade do |t|
     t.string "name"
     t.date "dob"
-    t.string "image_url"
+    t.string "image"
+    t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

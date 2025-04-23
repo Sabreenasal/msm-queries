@@ -3,7 +3,9 @@ class CreateActors < ActiveRecord::Migration[7.1]
     create_table :actors do |t|
       t.string :name
       t.date :dob
-      t.string :image_url
+      t.string :image
+      t.text :bio
+      
 
       t.timestamps
     end
