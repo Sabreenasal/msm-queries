@@ -14,6 +14,8 @@ class ActorsController < ApplicationController
 
     @the_actor = matching_actors.at(0)
 
+    @the_characters = Character.where({ :actor_id => @the_actor.id })
+    
     render({ :template => "actors/show" })
   end
 

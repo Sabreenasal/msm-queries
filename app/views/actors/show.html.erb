@@ -37,7 +37,7 @@
         Image url
       </dt>
       <dd>
-        <%= @the_actor.image_url %>
+        <%= @the_actor.image %>
       </dd>
 
       <dt>
@@ -88,7 +88,7 @@
           Image url
         </label>
 
-        <input type="text" id="image_url_box" name="query_image_url" value="<%= @the_actor.image_url %>">
+        <input type="text" id="image_url_box" name="query_image_url" value="<%= @the_actor.image %>">
       </div>
 
       <button>
@@ -99,3 +99,16 @@
 </div>
 
 <hr>
+
+<% the_characters = Character.where({ :actor_id => @the_actor.id })%>
+
+<ul>
+  <% the_characters.each do |character| %>
+  <% movie = Movie.where({ :id => character.movie_id }).at(0) %>
+    <li>
+      <% character.movie_id %>
+      <% character.name %>
+    </li>
+
+  <% end %>
+</ul>

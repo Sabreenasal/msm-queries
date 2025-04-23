@@ -8,11 +8,11 @@ class DirectorsController < ApplicationController
   end
 
   def youngest
-    render({ :template => "directors/youngest"})
+    render({ :template => "directors/youngest" })
   end
 
   def eldest
-    render({ :template => "directors/eldest"})
+    render({ :template => "directors/eldest" })
   end
 
   def show

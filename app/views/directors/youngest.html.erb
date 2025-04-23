@@ -2,4 +2,4 @@
 
 <% director = Director.where.not({ :dob => nil }).order({ :dob => :desc }).at(0) %>
 
-<p>The youngest director in our dataset right now is <%= director.name %>, born on <%= director.dob.strftime(%B %e,%Y)) %>.</p>
+<p>The youngest director in our dataset right now is <%= director.name %>, born on <%= director.dob.strftime("%B %e,%Y") %>.</p>
