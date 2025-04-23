@@ -5,7 +5,7 @@
 #  id         :bigint           not null, primary key
 #  bio        :text
 #  dob        :date
-#  image_url  :string
+#  image      :string
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

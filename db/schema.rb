@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_23_021921) do
     t.string "name"
     t.date "dob"
     t.text "bio"
-    t.string "image_url"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,8 +43,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_23_021921) do
     t.string "title"
     t.integer "year"
     t.integer "duration"
-    t.string "image_url"
+    t.string "image"
     t.integer "director_id"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

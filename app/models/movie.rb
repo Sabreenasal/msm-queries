@@ -3,8 +3,9 @@
 # Table name: movies
 #
 #  id          :bigint           not null, primary key
+#  description :text
 #  duration    :integer
-#  image_url   :string
+#  image       :string
 #  title       :string
 #  year        :integer
 #  created_at  :datetime         not null
