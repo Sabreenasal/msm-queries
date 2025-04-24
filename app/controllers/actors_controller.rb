@@ -15,7 +15,7 @@ class ActorsController < ApplicationController
     @the_actor = matching_actors.at(0)
 
     @the_characters = Character.where({ :actor_id => @the_actor.id })
-    
+
     render({ :template => "actors/show" })
   end
 
@@ -23,7 +23,7 @@ class ActorsController < ApplicationController
     the_actor = Actor.new
     the_actor.name = params.fetch("query_name")
     the_actor.dob = params.fetch("query_dob")
-    the_actor.image_url = params.fetch("query_image_url")
+    the_actor.image = params.fetch("query_image_url")
 
     if the_actor.valid?
       the_actor.save
@@ -39,7 +39,7 @@ class ActorsController < ApplicationController
 
     the_actor.name = params.fetch("query_name")
     the_actor.dob = params.fetch("query_dob")
-    the_actor.image_url = params.fetch("query_image_url")
+    the_actor.image = params.fetch("query_image_url")
 
     if the_actor.valid?
       the_actor.save

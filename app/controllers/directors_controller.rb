@@ -30,7 +30,7 @@ class DirectorsController < ApplicationController
     the_director.name = params.fetch("query_name")
     the_director.dob = params.fetch("query_dob")
     the_director.bio = params.fetch("query_bio")
-    the_director.image_url = params.fetch("query_image_url")
+    the_director.image = params.fetch("query_image_url")
 
     if the_director.valid?
       the_director.save
@@ -47,7 +47,7 @@ class DirectorsController < ApplicationController
     the_director.name = params.fetch("query_name")
     the_director.dob = params.fetch("query_dob")
     the_director.bio = params.fetch("query_bio")
-    the_director.image_url = params.fetch("query_image_url")
+    the_director.image = params.fetch("query_image_url")
 
     if the_director.valid?
       the_director.save
