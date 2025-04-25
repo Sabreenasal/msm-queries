@@ -1,8 +1,10 @@
 <div>
   <div>
-    <h1>
-      Director #<%= @the_director.id %> details
-    </h1>
+  
+
+    <!--<h1>-->
+      <!--# Director #<%#= @the_director.id %> details-->
+    <!--</h1>-->
 
     <div>
       <div>
@@ -12,7 +14,7 @@
       </div>
 
       <div>
-        <a href="/delete_director/<%= @the_director.id %>">
+        <a href="/delete_director/<%= @the_directors.id %>">
           Delete director
         </a>
       </div>
@@ -65,52 +67,63 @@
 </div>
 
 <hr>
+<h1> Filmography </h1>
 
 
 <div>
   <div>
-    <h2>
-      Edit director
-    </h2>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
 
-    <form action="/modify_director/<%= @the_director.id %>"  method="post" >
-      <div>
-        <label for="name_box">
-          Name
-        </label>
-
-        <input type="text" id="name_box" name="query_name" value="<%= @the_director.name %>">
-      </div>
-
-      <div>
-        <label for="dob_box">
-          Dob
-        </label>
-
-        <input type="date" id="dob_box" name="query_dob" value="<%= @the_director.dob %>">
-      </div>
-
-      <div>
-        <label for="bio_box">
-          Bio
-        </label>
-
-        <textarea id="bio_box" name="query_bio"><%= @the_director.bio %></textarea>
-      </div>
-
-      <div>
-        <label for="image_url_box">
+        <th>
           Image url
-        </label>
+        </th>
 
-        <input type="text" id="image_url_box" name="query_image_url" value="<%= @the_director.image %>">
-      </div>
+        <th>
+          Title
+        </th>
 
-      <button>
-        Update director
-      </button>
-    </form>
+        <th>
+          Year
+        </th>
+
+        <th>
+          Director
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_movies.each do |a_movie| %>
+      <tr>
+        <td>
+          <%= a_movie.id %>
+        </td>
+
+        <td>
+          <%= a_movie.image %>
+        </td>
+
+        <td>
+          <%= a_movie.title %>
+        </td>
+
+        <td>
+          <%= a_movie.year %>
+        </td>
+
+
+        <td>
+          <a href="/movies/<%= a_movies.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
   </div>
 </div>
-
-<hr>
