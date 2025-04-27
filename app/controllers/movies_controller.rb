@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
   def show
     the_id = params.fetch("path_id")
 
-    matching_movies = Movie.where({ :id => the_id })
+    matching_records = Movie.where({ :id => the_id })
 
     @the_movie = matching_records.at(0)
 
