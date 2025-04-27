@@ -1,159 +1,92 @@
+<h1>
+  Actor #<%= @the_actor.id %> details
+</h1>
+
 <div>
-  <div>
-    <h1>
-      Actor #<%= @the_actor.id %> details
-    </h1>
-
-    <div>
-      <div>
-        <a href="/actors">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_actor/<%= @the_actor.id %>">
-          Delete actor
-        </a>
-      </div>
-    </div>
-
-    <dl>
-      <dt>
-        Name
-      </dt>
-      <dd>
-        <%= @the_actor.name %>
-      </dd>
-
-      <dt>
-        Dob
-      </dt>
-      <dd>
-        <%= @the_actor.dob %>
-      </dd>
-
-      <dt>
-        Bio
-      </dt>
-      <dd>
-        <%= @the_actor.bio %>
-      </dd>
-
-      <dt>
-        Image url
-      </dt>
-      <dd>
-        <%= @the_actor.image %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_actor.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_actor.updated_at) %> ago
-      </dd>
-    </dl>
-  </div>
+  <a href="/actors">
+    Go back
+  </a>
 </div>
 
 <hr>
 
+<dl>
+  <dt>Name</dt>
+  <dd>
+    <%= @the_actor.name %>
+  </dd>
 
-<div>
-  <div>
-    <h2>
-      Edit actor
-    </h2>
+  <dt>Dob</dt>
+  <dd>
+    <%= @the_actor.dob %>
+  </dd>
 
-    <form action="/modify_actor/<%= @the_actor.id %>"  method="post" >
-      <div>
-        <label for="name_box">
-          Name
-        </label>
+  <dt>Bio</dt>
+  <dd>
+    <%= @the_actor.bio %>
+  </dd>
 
-        <input type="text" id="name_box" name="query_name" value="<%= @the_actor.name %>">
-      </div>
+  <dt>Image</dt>
+  <dd>
+    <image src="<%=@the_actor.image%>" width="200">
+    </dd>
 
-      <div>
-        <label for="dob_box">
-          Dob
-        </label>
+    <dt>Created at</dt>
+    <dd>
+      <%= time_ago_in_words(@the_actor.created_at) %> ago
+    </dd>
 
-        <input type="date" id="dob_box" name="query_dob" value="<%= @the_actor.dob %>">
-      </div>
+    <dt>Updated at</dt>
+    <dd>
+      <%= time_ago_in_words(@the_actor.updated_at) %> ago
+    </dd>
+  </dl>
 
-      <div>
-        <label for="bio_box">
-          Bio
-        </label>
+  <hr>
 
-        <input type="text" id="bio_box" name="query_bio" value="<%= @the_actor.bio %>">
-      </div>
+  <h1> Filmography </h1>
 
-      <div>
-        <label for="image_url_box">
-          Image url
-        </label>
+  <% matching_characters = Character.where({ :actor_id => @the_actor.id })%>
 
-        <input type="text" id="image_url_box" name="query_image_url" value="<%= @the_actor.image %>">
-      </div>
-
-      <button>
-        Update actor
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
-<h1> Filmography </h1>
-
-
-<% the_characters = Character.where({ :actor_id => @the_actor.id })%>
- 
-<ul>
-  <% the_characters.each do |character| %>
-  <% movie = Movie.where({ :id => character.movie_id }).at(0) %>
-    <li>
-      <%= movie.title %>
-      <%= character.name %>
-    </li>
-
-  <% end %>
-</ul>
-<div>
     <table border="1">
       <tr>
-        <td>
-         <Title>
-        </td>
-        <dd>
-        
-        </dd>
-        
+        <td><Title></td>
+          <td>Year</td>
+          <td>Director</td>
+          <td>Character name</td>
+          <td></td>
+        </tr>
 
-        <td>
-          Year
-        </td>
+        <% matching_characters.each do |character| %>
+          <tr>
+          <td>
+            <% matching_movies = Movie.where({ :id => character.movie_id}) %>
 
-        <td>
-          Director
-        </td>
+            <% the_movie= matching_movies.at(0)%>
+            <%= the_movie.title %>
+          </td>
 
-        <td>
-          Character name
-        </td>
-         <dd> 
-         
-         </dd>
-        <td>
-        </td>
-      </tr>
+          <td>
+            <%= the_movie.year%>
+          </td>
+
+          <td>
+            <% matching_directors = Director.where({ :id => the_movie.director_id}) %>
+
+            <% the_director = matching_directors.at(0)%>
+
+            <%= the_director.name%>
+          </td>
+
+          <td><%= character.name%></td>
+
+          <td>
+            <a href="/movies/<%= the_movie.id%>">
+              Show details
+            </a>
+          </td>
+
+        </tr>
+      <%end%>
+
+    </table>
