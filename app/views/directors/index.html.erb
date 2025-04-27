@@ -5,8 +5,6 @@
 
 <hr>
 
-<div>
-  <div>
     <table border="1">
       <tr>
         <th>ID</th>
@@ -18,33 +16,10 @@
 
       <% @list_of_directors.each do |a_director| %>
       <tr>
-        <td>
-          <%= a_director.id %>
-        </td>
-
-        <td>
-          <%= a_director.name %>
-        </td>
-
-        <td>
-          <%= a_director.dob %>
-        </td>
-
-        <td>
-          <%= a_director.bio %>
-        </td>
-
-        <td>
-          <%= a_director.image %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_director.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_director.updated_at) %> ago
-        </td>
-
+        <td><%= a_director.id %></td>
+        <td><image src= "<%=a_director.image%>" width="100"></td>
+        <td><%= a_director.name %></td>
+        <td><%= a_director.dob %></td>
         <td>
           <a href="/directors/<%= a_director.id %>">
             Show details
@@ -53,7 +28,3 @@
       </tr>
       <% end %>
     </table>
-  </div>
-</div>
-
-<hr>
