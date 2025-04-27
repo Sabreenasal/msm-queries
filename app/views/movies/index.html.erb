@@ -1,84 +1,31 @@
-<div>
-  <div>
+
     <h1>
       List of all movies
     </h1>
-  </div>
-</div>
-
 
 <hr>
-<div>
-  <div>
+
     <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Title
-        </th>
-
-        <th>
-          Year
-        </th>
-
-        <th>
-          Duration
-        </th>
-
-        <th>
-          Image url
-        </th>
-
-        <th>
-          Director
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Director</th>
+        <th></th>
       </tr>
 
       <% @list_of_movies.each do |a_movie| %>
       <tr>
+        <td><%= a_movie.id %></td>
+        <td><image src="<%=a_movie.image%>" width="50"></td>
+        <td><%= a_movie.title %></td>
+        <td><%= a_movie.year %></td>
+        
         <td>
-          <%= a_movie.id %>
-        </td>
-
-        <td>
-          <%= a_movie.title %>
-        </td>
-
-        <td>
-          <%= a_movie.year %>
-        </td>
-
-        <td>
-          <%= a_movie.duration %>
-        </td>
-
-        <td>
-          <%= a_movie.image %>
-        </td>
-
-        <td>
-          <%= a_movie.director_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_movie.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_movie.updated_at) %> ago
+           <%  matching_records = Director.where({ :id => a_movie.director_id })%>
+           <% the_director = matching_records.at(0)%>  
+           <%= the_director.name%>
         </td>
 
         <td>
@@ -89,7 +36,4 @@
       </tr>
       <% end %>
     </table>
-  </div>
-</div>
-
-<hr>
+  
